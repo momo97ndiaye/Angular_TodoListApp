@@ -43,12 +43,14 @@ export class DashboardComponent implements OnInit {
   }
 
   editTask(){
+  if (this.editTaskValue!=='') {
     this.taskObj.task_name=this.editTaskValue;
     this.crudService.editTask(this.taskObj).subscribe(res=>{
       this.ngOnInit();
-    }, err=>{
-      alert("Impossible de mettre a jour la tache");
     });
+  }else{
+    alert("Veuillez ajouter un contenu ")
+  }
   }
 
   deleteTask(etask:Task){
