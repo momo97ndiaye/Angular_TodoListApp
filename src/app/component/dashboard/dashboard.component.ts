@@ -32,13 +32,14 @@ export class DashboardComponent implements OnInit {
   }
 
   addTask(){
-    this.taskObj.task_name=this.addTaskValue;
+    if (this.addTaskValue!=='') {
+      this.taskObj.task_name=this.addTaskValue;
     this.crudService.addTask(this.taskObj).subscribe(res=>{
       this.ngOnInit();
-      this.addTaskValue='';
     }, err=>{
       alert(err);
     });
+    }
   }
 
   editTask(){
